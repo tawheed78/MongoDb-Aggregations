@@ -3,3 +3,13 @@
 
 2)In db sample_mflix, collection movies, find the unique genres for country France.
 => db.sample_mflix.movies.distinct("genres": {"countries":"France"})
+
+
+3)In db sample_mflix, collection movies, find all movies having imdb rating more than 7 and at least 10 reviews and tomatoes rating more than 8 with at least 50 reviews.
+=> db.sample_mflix.movies.find({
+      "imdb.ratings": {$gt : 7},
+      "imdb.votes": {$gte : 10},
+      "tomatoes.viewer.ratings": {$gt : 8},
+      "tomatoes.viewer.numReviews": {$gte : 50}
+     })
+
